@@ -52,6 +52,15 @@ myApp.config(function($routeProvider) {
         });
 });
 
+myApp.run(['$rootScope', '$location', function($rootScope, $location) {
+    var path = function() {
+        return $location.path();
+    };
+    $rootScope.$watch(path, function(newVal, oldVal) {
+        $rootScope.activetab = newVal;
+    });
+}]);
+
 // The $routeChangeStart event fires before the actual route 
 // change occurs. 
 // So, whenever a route is accessed, before 

@@ -28,10 +28,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#/">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li class="dropdown">
+                        <li class="" ng-class="{active: activetab == '/'}"><a href="#/">Home</a></li>
+                        <li ng-if="logged" ng-class="{active: activetab == '/myitems'}"><a href="#">My Items</a></li>
+                        <li ng-if="logged" ng-class="{active: activetab == '/items'}"><a href="#">All Items</a></li>
+                        <li ng-if="logged" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -45,10 +45,10 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-controller="indexController">
-                        <li ng-if="!logged"><a href="#/login"><i></i>Login</a></li>
+                        <li ng-if="!logged" ng-class="{active: activetab == '/login'}"><a href="#/login"><i></i>Login</a></li>
                         <li ng-controller="logoutController" ng-if="logged" ng-click='logout()'><a href="#/"><i></i>Logout</a></li>
                         <li ng-if="logged"><a href="#/settings"><i class="fa fa-cog fa-cog-size" aria-hidden="true"></i></a></li>
-                        <li ng-if="!logged"><a href="#/register"><i></i>Signup</a></li>
+                        <li ng-if="!logged" ng-class="{active: activetab == '/register'}"><a href="#/register"><i></i>Signup</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
